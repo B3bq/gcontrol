@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.black12,
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
@@ -26,13 +26,13 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               // Ikona lub Logo
               const Icon(
-                Icons.lock_outline,
+                Icons.sports_soccer,
                 size: 100,
-                color: Colors.blue,
+                color: Colors.lightGreenAccent,
               ),
               const SizedBox(height: 20),
               const Text(
-                "Witaj ponownie!",
+                "G-Control",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
@@ -111,23 +111,10 @@ class _LoginPageState extends State<LoginPage> {
                   const Text("Nie masz konta? "),
                   TextButton(
                     onPressed: () {
-                      // Tutaj w przyszłości dasz Navigator do strony rejestracji.
-                      // Na ten moment symulujemy odesłanie do zewnętrznej strony.
-                      print("Przekierowanie do: https://google.com");
-
-                      // Opcjonalnie: wyświetlenie informacji o przekierowaniu
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: const Text("Rejestracja"),
-                          content: const Text("Zostaniesz przekierowany do strony rejestracji (google.com)."),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text("OK"),
-                            )
-                          ],
-                        ),
+                      // Przekierowanie do strony rejestracji
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
                     },
                     child: const Text(
