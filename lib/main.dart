@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gcontrol/screens/login.dart';
+import 'package:gcontrol/screens/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
               displayColor: Colors.white,
             ),
       ),
-      home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }

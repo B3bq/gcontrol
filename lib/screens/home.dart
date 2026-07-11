@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gcontrol/screens/profile.dart';
+import 'package:gcontrol/screens/stats.dart';
+import 'package:gcontrol/screens/start.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
@@ -17,6 +20,9 @@ class _HomePage extends State<HomePage> {
   void initState() {
     super.initState();
     _screens = [
+      const StatsPage(),
+      const StartPage(),
+      const ProfilePage(),
     ];
   }
 
@@ -74,7 +80,7 @@ class _HomePage extends State<HomePage> {
               });
             },
             items: [
-              BottomNavigationBarItem(icon: _buildItem(Icons.stacked_bar_chart_sharp, 'Settings', 0), label: 'Stats'),
+              BottomNavigationBarItem(icon: _buildItem(Icons.stacked_bar_chart_sharp, 'Statistics', 0), label: 'Stats'),
               BottomNavigationBarItem(icon: _buildItem(Icons.home, 'Home', 1), label: 'Home'),
               BottomNavigationBarItem(icon: _buildItem(Icons.account_circle, 'Profile', 2), label: 'Profile'),
             ],
