@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gcontrol/screens/login.dart';
+import 'package:gcontrol/screens/last_game_datails.dart';
 
 class LastGame{
   final int minutes;
@@ -29,6 +29,8 @@ class _StartPage extends State<StartPage> {
     speed: 7.2,
     ga: 3,
   );
+
+  bool _showDetails = false;
 
   Widget buildTable(LastGame lastGame) {
     return Container(
@@ -86,102 +88,139 @@ class _StartPage extends State<StartPage> {
     );
   }
 
+  Widget _buildStartContent() {
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.white10,
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Następny mecz',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                    const SizedBox(height: 32),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 24,
+                            backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text('FC Barcelona',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    const Text('VS',
+                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white)),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 24,
+                            backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text('FC Barcelona',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          const Text('Ostatni mecz',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 12),
+          buildTable(lastGame),
+          TextButton(
+            onPressed: () {
+              setState(() {
+                _showDetails = true;
+              });
+            },
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              alignment: Alignment.centerLeft,
+            ),
+            child: const Text(
+              "Zobacz szczegóły >>",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black54,
       padding: const EdgeInsets.all(16.0),
-      child: Center(
-        child:
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.white10,
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('Następny mecz',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
-                        const SizedBox(height: 32),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 24,
-                                backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'),
-                              ),
-                              const SizedBox(height: 8),
-                              const Text('FC Barcelona',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        const Text('VS',
-                          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white)),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                  radius: 24,
-                                  backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'),
-                                ),
-                                const SizedBox(height: 8),
-                                const Text('FC Barcelona',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
-                              ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
-              ),
-              const SizedBox(height: 24),
-              const Text('Ostatni mecz',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 12),
-              buildTable(lastGame),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ),
-                  );
-                },
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  alignment: Alignment.centerLeft,
-                ),
-                child: const Text(
-                  "Zobacz szczegóły >>",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.blue,
-                  ),
-                ),
-              )
-            ],
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        switchInCurve: Curves.easeOutCubic,
+        switchOutCurve: Curves.easeInCubic,
+        transitionBuilder: (child, animation) {
+          final offsetAnimation = Tween<Offset>(
+            begin: const Offset(0.9, 0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOutCubic,
+          ));
+
+          return FadeTransition(
+            opacity: animation,
+            child: SlideTransition(
+              position: offsetAnimation,
+              child: child,
+            ),
+          );
+        },
+        child: _showDetails
+            ? SizedBox(
+          key: const ValueKey('details'),
+          child: LastGameDetails(
+            onBack: () {
+              setState(() {
+                _showDetails = false;
+              });
+            },
           ),
+        )
+            : SizedBox(
+          key: const ValueKey('start'),
+          child: _buildStartContent(),
+        ),
       ),
     );
   }

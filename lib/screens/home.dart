@@ -4,14 +4,16 @@ import 'package:gcontrol/screens/stats.dart';
 import 'package:gcontrol/screens/start.dart';
 
 class HomePage extends StatefulWidget{
-  const HomePage({super.key});
+  const HomePage({super.key, this.initialIndex = 1});
+
+  final int initialIndex;
 
   @override
   State<HomePage> createState() => _HomePage();
 }
 
 class _HomePage extends State<HomePage> {
-  int _currentIndex = 1; // Active index for the bottom navigation bar
+  late int _currentIndex;
 
   // List of screens corresponding to each tab in the bottom navigation bar
   late final List<Widget> _screens;
@@ -19,6 +21,7 @@ class _HomePage extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _currentIndex = widget.initialIndex;
     _screens = [
       const StatsPage(),
       const StartPage(),
