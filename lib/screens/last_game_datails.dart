@@ -12,7 +12,8 @@ class LastGameDetails extends StatelessWidget {
       {'label': 'Minuty', 'value': '90'},
       {'label': 'Dystans', 'value': '10.5 km'},
       {'label': 'Max prędkość', 'value': '7.2 km/h'},
-      {'label': 'GA', 'value': '3'},
+      {'label': 'Bramki', 'value': '3'},
+      {'label': 'Asysty', 'value': '3'},
     ];
 
     return SingleChildScrollView(
@@ -37,7 +38,50 @@ class LastGameDetails extends StatelessWidget {
               ),
             ],
           ),
-          
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 24,
+                        backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text('FC Barcelona',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                const Text('2',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white)),
+                const SizedBox(width: 16),
+                const Text(':',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white)),
+                const SizedBox(width: 16),
+                const Text('1',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white)),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 24,
+                        backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text('FC Barcelona',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                  ],
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 16),
           Container(
             decoration: BoxDecoration(
