@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gcontrol/widgets/field_heatmap.dart';
 
 class LastGameDetails extends StatelessWidget {
   const LastGameDetails({super.key, this.onBack});
@@ -71,6 +72,17 @@ class LastGameDetails extends StatelessWidget {
               }).toList(),
             ),
           ),
+          const SizedBox(height: 20),
+          const Text(
+            'Mapa aktywności na boisku',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          const FieldHeatmap(),
         ],
       ),
     );
