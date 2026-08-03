@@ -1,4 +1,5 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:gcontrol/widgets/calendar_widget.dart';
 
 class PlayerProfile {
   final String firstName;
@@ -64,6 +65,55 @@ class _ProfilePage extends State<ProfilePage> {
       kilometers: 312.7,
     ),
   );
+
+  void _openCalendarDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          insetPadding: const EdgeInsets.all(16.0),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 520.0),
+            child: CalendarScheduleWidget(
+              events: [
+                CalendarEvent(
+                  date: DateTime(2026, 8, 5),
+                  type: CalendarEventType.training,
+                  title: 'Trening indywidualny',
+                  subtitle: 'Faza techniczna i kończenie akcji.',
+                ),
+                CalendarEvent(
+                  date: DateTime(2026, 8, 8),
+                  type: CalendarEventType.match,
+                  title: 'Mecz towarzyski',
+                  subtitle: 'GControl FC vs. FC Kędzierzyn',
+                ),
+                CalendarEvent(
+                  date: DateTime(2026, 8, 12),
+                  type: CalendarEventType.training,
+                  title: 'Trening taktyczny',
+                  subtitle: 'Praca nad pressingu i przejściami.',
+                ),
+                CalendarEvent(
+                  date: DateTime(2026, 8, 15),
+                  type: CalendarEventType.match,
+                  title: 'Mecz ligowy',
+                  subtitle: 'GControl FC vs. Team Białystok',
+                ),
+                CalendarEvent(
+                  date: DateTime(2026, 8, 19),
+                  type: CalendarEventType.training,
+                  title: 'Trening wytrzymałościowy',
+                  subtitle: 'Praca cardio i utrzymanie tempa.',
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   Widget buildStatsTable(PlayerStats stats) {
     return Container(
@@ -230,6 +280,21 @@ class _ProfilePage extends State<ProfilePage> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: () => _openCalendarDialog(context),
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                  ),
+                  icon: const Icon(Icons.calendar_month_outlined, color: Colors.white70),
+                  label: const Text(
+                    'Kalendarz',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
               const SizedBox(height: 24),
